@@ -16,27 +16,7 @@ jobs:
       - name: install-databricks-cli
         uses: microsoft/install-databricks-cli@v1.0.0
 
-      - name: "Install Azure CLI"
-        uses: ./.github/actions/azcli-install 
-
-      - name: "Azure login"
-        uses: ./.github/actions/azure-login
+      - name: Azure Login
+        uses: Azure/login@v1
         with:
-          clientId: ${{ secrets.AZ_CLIENT_ID }}
-          clientSecret: ${{ secrets.AZ_CLIENT_SECRET }}
-          tenantId: ${{ secrets.AZ_TENANT_ID }}
-
-      - name: Exports Configs
-        uses: ./.github/actions/appconfig-export
-        with: 
-          environment: dev
-
-      - name: Generate Databricks Token
-        uses: ./.github/actions/databricks-generate-token
-
-      - name: Import notebooks
-        uses: ./.github/actions/databricks-import-notebooks
-        with:
-          DATABRICKS_HOST: ${{ env.sharedDatabricksHost }}
-          LOCAL_NOTEBOOKS_PATH: ./databricks
-          REMOTE_NOTEBOOK_PATH: '/datalab'
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
