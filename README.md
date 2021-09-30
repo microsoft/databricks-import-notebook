@@ -28,10 +28,10 @@ steps:
     - name: databricks-import-directory
       uses: microsoft/databricks-import-directory@v1.0.0
       with:
-        databricks-host: 'https://<instance-name>.cloud.databricks.com'
-        databricks-token: 'token'
-        local-path: './my-local-path'
-        remote-path: './my-remote-path'
+        databricks-host: https://<instance-name>.cloud.databricks.com
+        databricks-token: token
+        local-path: ./my-local-path
+        remote-path: /my-remote-path
 ```
 
 ### Inputs
