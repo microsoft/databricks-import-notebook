@@ -30,7 +30,8 @@ jobs:
       - name: Import Databricks notebooks
         uses: ./
         with:
-          databricks-host: 'https://adb-2626295716112428.8.azuredatabricks.net/'
+          databricks-host: '${{ secrets.ADB_HOST }}'
+          databricks-token: '${{ secrets.ADB_TOKEN }}'
           local-path: './notebooks'
           remote-path: '/import-notebooks'
 
