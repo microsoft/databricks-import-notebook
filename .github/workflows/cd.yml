@@ -19,9 +19,9 @@ jobs:
       - name: Import Databricks notebooks
         uses: ./
         with:
-          databricks-host: '${{ secrets.ADB_HOST }}'
-          databricks-token: '${{ secrets.ADB_TOKEN }}'
-          local-path: './notebooks'
-          remote-path: '/import-notebooks'
+          databricks-host: ${{ secrets.ADB_HOST }}
+          databricks-token: ${{ secrets.ADB_TOKEN }}
+          local-path: ./notebooks
+          remote-path: /import-notebook
 
     
