@@ -27,6 +27,7 @@ steps:
       uses: microsoft/databricks-import-directory@v1.0.0
       with:
         databricks-host: 'https://<instance-name>.cloud.databricks.com'
+        databricks-token: 'token'
         local-path: './my-local-path'
         remote-path: './my-remote-path'
 ```
@@ -36,6 +37,7 @@ steps:
 | Name | Description | Required | Default value |
 | --- | --- | --- | --- |
 | `databricks-host` | Workspace URL, with the format https://<instance-name>.cloud.databricks.com | true |NA|
+| `databricks-token` | Databricks token, it can be a PAT or an AAD Token | true |NA|
 | `local-path` | Path of the directory you want to import | true |NA|
 | `remote-path` | Path of the directory inside Databricks workspace where you want the files to land| true |NA|
 
