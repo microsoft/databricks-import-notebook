@@ -17,7 +17,9 @@ The GitHub Action works with the 'import_dir' command from the Databricks Worksp
 
 * Make sure you have a directory in your repo you want to import into Databricks
 * Make sure you have installed the [Databricks Cli](https://github.com/marketplace/actions/install-databricks-cli)
-* Make sure you have a Databricks Access Token.
+* Make sure you have a Databricks Access Token. It can be a [PAT](https://docs.databricks.com/dev-tools/api/latest/authentication.html), or if you're working with Azure Databricks, it can be an [AAD Token](https://docs.microsoft.com/en-us/azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token).
+
+>Note: You can find both sample workflows in this repository.
 
 ### Usage
 
