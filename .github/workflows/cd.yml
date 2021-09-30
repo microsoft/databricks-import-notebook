@@ -21,7 +21,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
-      - name: generate-databricks-token
+      - id: generate-databricks-token
         run: | 
           token=$(az account get-access-token --resource=2ff814a6-3304-4ab8-85cb-cd0e6f879c1d --query accessToken --output tsv)
           echo "DATABRICKS_TOKEN=$token" >> $GITHUB_ENV
