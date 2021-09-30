@@ -24,7 +24,6 @@ jobs:
       
       - name: generate-databricks-token
         run: | 
-          echo  ${{ steps.azure-resource-login.outputs.token }}
           echo "DATABRICKS_TOKEN= ${{ steps.azure-resource-login.outputs.token }}" >> $GITHUB_ENV
             
       - name: Import Databricks notebooks
