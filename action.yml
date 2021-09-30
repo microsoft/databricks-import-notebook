@@ -7,7 +7,7 @@ inputs:
     required: true
   databricks-token:
     description: 'Databricks token'
-    required: true
+    required: false
   local-path:
     description: 'LOCAL_NOTEBOOKS_PATH'
     required: true
