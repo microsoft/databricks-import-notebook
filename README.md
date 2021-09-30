@@ -17,7 +17,7 @@ The GitHub Action works with the 'import_dir' command from the Databricks Worksp
 
 * Make sure you have a directory in your repo you want to import into Databricks
 * Make sure you have installed the [Databricks Cli](https://github.com/marketplace/actions/install-databricks-cli)
-* Make sure you have a Databricks Token. You can find an example on how to generate an AAD Token for a service principal in the sample workflow in this repo.
+* Make sure you have a Databricks Access Token.
 
 ### Usage
 
