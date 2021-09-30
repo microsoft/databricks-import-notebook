@@ -1,6 +1,6 @@
 # Databricks Import Directory Action
 
-GitHub Action that imports the files from a local path into a Databricks workspace.
+GitHub Action that imports the files from a local path into a Databricks workspace. [![Build](https://github.com/microsoft/databricks-import-notebook/actions/workflows/cd.yml/badge.svg)](https://github.com/microsoft/databricks-import-notebook/actions/workflows/cd.yml)
 
 ## When to use
 
