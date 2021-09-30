@@ -1,14 +1,43 @@
-# Project
+# Databricks Import Directory Action
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+GitHub Action that imports the files from a local path into a Databricks workspace.
 
-As the maintainer of this project, please make a few updates:
+## When to use
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+This action is useful when you need to import a directory to the Databricks workspace, for example, when you want to import notebooks into a specific path.
+Only directories and files with the extensions .scala, .py, .sql, .r, .R, .ipynb are imported. 
+
+## How it works
+
+The GitHub Action works with the 'import_dir' command from the Databricks Workspace Cli
+
+## Getting Started
+
+### Prerequisites
+
+* Make sure you have a directory in your repo you want to import into Databricks
+* Make sure you have installed the [Databricks Cli](https://github.com/marketplace/actions/install-databricks-cli)
+* Make sure you have a Databricks Token. You can find an example on how to generate an AAD Token for a service principal in the sample workflow in this repo.
+
+### Usage
+
+```yml
+steps:
+    - name: databricks-import-directory
+      uses: microsoft/databricks-import-directory@v1.0.0
+      with:
+        databricks-host: 'https://<instance-name>.cloud.databricks.com'
+        local-path: './my-local-path'
+        remote-path: './my-remote-path'
+```
+
+### Inputs
+
+| Name | Description | Required | Default value |
+| --- | --- | --- | --- |
+| `databricks-host` | Workspace URL, with the format https://<instance-name>.cloud.databricks.com | true |NA|
+| `local-path` | Path of the directory you want to import | true |NA|
+| `remote-path` | Path of the directory inside Databricks workspace where you want the files to land| true |NA|
 
 ## Contributing
 
