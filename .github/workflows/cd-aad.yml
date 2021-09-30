@@ -15,16 +15,17 @@ jobs:
           
       - name: install-databricks-cli
         uses: microsoft/install-databricks-cli@v1.0.0
-      
-      - name: Azure Login
-        uses: Azure/login@v1
+        
+      - id: azure-resource-login
+        uses: Azure/azure-resource-login-action@v1.0.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          resource-url: 2ff814a6-3304-4ab8-85cb-cd0e6f879c1d
       
       - name: generate-databricks-token
         run: | 
-          token=$(az account get-access-token --resource=2ff814a6-3304-4ab8-85cb-cd0e6f879c1d --query accessToken --output tsv)
-          echo "DATABRICKS_TOKEN=$token" >> $GITHUB_ENV
+          echo  ${{ steps.azure-resource-login.outputs.resourceToken }}
+          echo "DATABRICKS_TOKEN= ${{ steps.azure-resource-login.outputs.resourceToken }}" >> $GITHUB_ENV
             
       - name: Import Databricks notebooks
         uses: ./
