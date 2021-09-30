@@ -22,7 +22,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-url: 2ff814a6-3304-4ab8-85cb-cd0e6f879c1d
       
-      - name: generate-databricks-token
+      - name: set-databricks-token
         run: | 
           echo "DATABRICKS_TOKEN= ${{ steps.azure-resource-login.outputs.token }}" >> $GITHUB_ENV
             
