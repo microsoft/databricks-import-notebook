@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "action.yml"
-      - ".github/workflows/cd.yml"
+      - ".github/workflows/cd-aad.yml"
 
 jobs:
   deploy:
@@ -20,11 +20,16 @@ jobs:
         uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: generate-databricks-token
+        run: | 
+          token=$(az account get-access-token --resource=2ff814a6-3304-4ab8-85cb-cd0e6f879c1d --query accessToken --output tsv)
+          echo "DATABRICKS_TOKEN=$token" >> $GITHUB_ENV
             
       - name: Import Databricks notebooks
         uses: ./
         with:
           databricks-host: ${{ secrets.ADB_HOST }}
-          databricks-token: ${{ secrets.ADB_TOKEN }}
+          databricks-token: ${{ env.DATABRICKS_TOKEN }}
           local-path: ./notebooks
           remote-path: /import-notebook
