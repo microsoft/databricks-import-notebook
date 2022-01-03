@@ -21,7 +21,7 @@ runs:
     - id: import-notebooks
       run: | 
         echo "Uploading notebooks from $LOCAL_NOTEBOOKS_PATH to $REMOTE_NOTEBOOK_PATH in the workspace $DATABRICKS_HOST"
-        databricks workspace import_dir --overwrite "${LOCAL_NOTEBOOKS_PATH}" "${REMOTE_NOTEBOOK_PATH}" --debug
+        databricks workspace import_dir --overwrite "${LOCAL_NOTEBOOKS_PATH}" "${REMOTE_NOTEBOOK_PATH}"
       shell: bash
       env:
         DATABRICKS_HOST: ${{ inputs.databricks-host }}
