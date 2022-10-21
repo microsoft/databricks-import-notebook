@@ -32,6 +32,7 @@ steps:
         databricks-token: token
         local-path: ./my-local-path
         remote-path: /my-remote-path
+        # clean-workspace-remote-directory: true
 ```
 
 ### Inputs
@@ -42,6 +43,7 @@ steps:
 | `databricks-token` | Databricks token, it can be a PAT or an AAD Token | true |NA|
 | `local-path` | Path of the directory you want to import | true |NA|
 | `remote-path` | Path of the directory inside Databricks workspace where you want the files to land| true |NA|
+| `clean-workspace-remote-directory` | Removes objects recursive from the Databricks workspace specified remote-path before they get added by this action| false | false |
 
 ## Contributing
 
