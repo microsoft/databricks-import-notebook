@@ -14,12 +14,21 @@ inputs:
   remote-path:
     description: 'REMOTE_NOTEBOOK_PATH'
     required: true
+  clean-workspace-remote-directory:
+    description: 'Removes objects recursive from the Databricks workspace specified REMOTE_NOTEBOOK_PATH'
+    required: false
+    default: false
 
 runs:
   using: "composite"
   steps:
     - id: import-notebooks
-      run: | 
+      run: |
+        if [ $CLEAN_WORKSPACE_REMOTE_DIRECTORY = true ]
+        then
+          echo "Removes objects recursive from $REMOTE_NOTEBOOK_PATH in the workspace $DATABRICKS_HOST"
+          databricks workspace rm -r "${REMOTE_NOTEBOOK_PATH}"
+        fi
         echo "Uploading notebooks from $LOCAL_NOTEBOOKS_PATH to $REMOTE_NOTEBOOK_PATH in the workspace $DATABRICKS_HOST"
         databricks workspace import_dir --overwrite "${LOCAL_NOTEBOOKS_PATH}" "${REMOTE_NOTEBOOK_PATH}" --debug
       shell: bash
@@ -28,3 +37,4 @@ runs:
         DATABRICKS_TOKEN: ${{ inputs.databricks-token}}
         LOCAL_NOTEBOOKS_PATH: ${{ inputs.local-path }}
         REMOTE_NOTEBOOK_PATH: ${{ inputs.remote-path }}
+        CLEAN_WORKSPACE_REMOTE_DIRECTORY: ${{ inputs.clean-workspace-remote-directory }}
